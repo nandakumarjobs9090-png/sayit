@@ -1,90 +1,45 @@
 # SayIt 🗣️
 
-> Plan difficult conversations with confidence.
+> **Say what you mean. Without the spiral.**
 
-SayIt helps you prepare for hard conversations — with your manager, partner, or anyone else. Answer 4 simple questions and get a personalized, AI-generated conversation blueprint in seconds.
+We all have that one conversation we've been putting off for days — maybe weeks. The one you keep rehearsing in your head but never actually have.
 
-**Private. No login. No data stored.**
-
----
-
-## 🚀 Deploy to Vercel (recommended)
-
-The easiest way to host SayIt directly from GitHub — free, automatic deploys on every push.
-
-### Step 1 — Push to GitHub
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/sayit.git
-git push -u origin main
-```
-
-### Step 2 — Connect to Vercel
-1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
-2. Click **"Add New Project"**
-3. Import your `sayit` repository
-4. Click **Deploy** (Vercel auto-detects React)
-
-### Step 3 — Add your API key
-1. In Vercel, go to your project → **Settings → Environment Variables**
-2. Add:
-   - **Name:** `ANTHROPIC_API_KEY`
-   - **Value:** your key from [console.anthropic.com](https://console.anthropic.com)
-3. Click **Save** → **Redeploy**
-
-✅ Your app is live at `https://sayit.vercel.app` (or similar).
+SayIt turns that anxious mental loop into a clear, calm plan. Answer 4 simple questions and get a personalized conversation blueprint in seconds — an opening line, your core message, how to handle pushback, and a reminder that you can do this.
 
 ---
 
-## 💻 Run Locally
+## Who it's for
 
-```bash
-git clone https://github.com/YOUR_USERNAME/sayit.git
-cd sayit
-npm install
-cp .env.example .env       # add your API key inside
-npm start                  # opens at http://localhost:3000
-```
+Anyone who's ever needed to say something hard to someone they care about.
 
----
-
-## 📁 Project Structure
-
-```
-sayit/
-├── api/
-│   └── chat.js            # Serverless proxy — keeps API key secret
-├── public/
-│   └── index.html
-├── src/
-│   ├── index.js
-│   └── App.jsx
-├── .env.example
-├── .gitignore
-├── vercel.json
-├── package.json
-└── README.md
-```
+- 💔 Ending a relationship or friendship
+- 💬 Giving honest feedback to a colleague or manager
+- 🛑 Setting a boundary with family
+- ⚡ Clearing the air after a conflict
+- 🙏 Apologizing — and actually meaning it
+- 🙋 Asking for what you need — a raise, more space, more support
 
 ---
 
-## 🔐 Security
+## How it works
 
-Your API key lives only in Vercel's environment variables — never in the browser. All AI calls go through `/api/chat`.
+1. Tell SayIt **who** you need to talk to
+2. Describe **what** you need to say
+3. Pick **how** it makes you feel
+4. Share **what** you need from the conversation
 
----
-
-## Tech Stack
-
-- React 18
-- Vercel (hosting + serverless functions)
-- Anthropic Claude API
+That's it. SayIt builds your script around your exact words and situation — nothing generic, nothing robotic.
 
 ---
 
-## License
+## Private by design
 
-MIT
+No login. No account. No data stored. Your words stay yours.
+
+---
+
+## Try it
+
+**[→ sayit-eta.vercel.app](https://sayit-eta.vercel.app/)**
+
+Built with React · Powered by Google Gemini AI
