@@ -4,12 +4,17 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.GEMINI_API_KEY;
+
   if (!apiKey) {
-    return res.status(500).json({ error: "API key not configured" });
+    return res.status(500).json({ error: "GEMINI_API_KEY is not set" });
   }
 
   try {
     const { prompt } = req.body;
+
+    if (!prompt) {
+      return res.status(400).json({ error: "No prompt provided" });
+    }
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
@@ -24,11 +29,14 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
-    if (!response.ok) return res.status(response.status).json(data);
+
+    if (!response.ok) {
+      return res.status(response.status).json({ error: data?.error?.message || "Gemini error", detail: data });
+    }
 
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
     return res.status(200).json({ text });
   } catch (err) {
-    return res.status(500).json({ error: "Something went wrong" });
+    return res.status(500).json({ error: err.message || "Something went wrong" });
   }
 }
