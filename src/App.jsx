@@ -117,16 +117,7 @@ export default function App() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          messages: [
-            {
-              role: "user",
-              content: `You are a compassionate communication coach. Generate a personalized conversation blueprint. Be specific — use their words, reference their person and situation. Never be generic.
+      const prompt = `You are a compassionate communication coach. Generate a personalized conversation blueprint. Be specific — use their words, reference their person and situation. Never be generic.
 
 WHO: ${who}
 SITUATION: ${what}
@@ -150,13 +141,15 @@ If [reaction]: "[what to say]"
 If [reaction]: "[what to say]"
 
 REMEMBER THIS
-One short, powerful sentence of encouragement tied to their specific fear or hesitation.`,
-            },
-          ],
-        }),
+One short, powerful sentence of encouragement tied to their specific fear or hesitation.`;
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
       });
       const data = await res.json();
-      const text = data.content?.map((i) => i.text || "").join("\n") || "";
+      const text = data.text || "";
       if (!text) throw new Error();
       setScript(text);
       setStep(4);
